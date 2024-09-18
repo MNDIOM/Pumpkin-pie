@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+
+require('dotenv').config(); 
 const express = require("express");
 const app = express();
 const PORT = 3000;
@@ -11,7 +12,7 @@ const pumpkinPiesRouter = require("./routes/pumpkinPies");
 app.use("/users", userRouter);
 app.use("/pumpkinpies", pumpkinPiesRouter);
 
-const uri = "mongodb+srv://Moe:Mamakadia@cluster0.skekizd.mongodb.net/pumpkinpies?retryWrites=true&w=majority&appName=Cluster0";
+const uri = process.env.MONGODB_URI;
 
 async function connectDb() {
     try {
