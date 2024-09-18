@@ -1,6 +1,6 @@
-
-require('dotenv').config(); 
+require('dotenv').config();
 const express = require("express");
+const mongoose = require('mongoose');
 const app = express();
 const PORT = 3000;
 
@@ -16,7 +16,7 @@ const uri = process.env.MONGODB_URI;
 
 async function connectDb() {
     try {
-        await mongoose.connect(uri);
+        await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }); 
         console.log("Successfully connected to MongoDB!");
     } catch (error) {
         console.log("Error: " + error);
